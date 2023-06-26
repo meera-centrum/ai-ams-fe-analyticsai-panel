@@ -1,0 +1,17 @@
+.chat-input-container { 
+    
+}
+
+.chat-input { 
+}
+
+.chat-button-container{ 
+    display: flex;
+    justify-content: end;
+}
+
+.chat-button { 
+    width: 24px;
+    height: 24px;
+    display: flex;
+}
