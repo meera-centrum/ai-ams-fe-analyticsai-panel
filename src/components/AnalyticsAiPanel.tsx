@@ -7,7 +7,7 @@ import { Chat } from './Chat';
 
 interface Props extends PanelProps<AnalyticsAiOptions> {}
 
-const QUERY_TEXTFIELD_PLACEHOLDER = 'Type here to ask your query...'
+const QUERY_TEXTFIELD_PLACEHOLDER = 'Type here to ask your query...';
 
 const getStyles = () => {
   return {
@@ -32,7 +32,11 @@ const getStyles = () => {
 export const AnalyticsAiPanel: React.FC<Props> = ({ options, data, width, height }) => {
   // const theme = useTheme2();
   const styles = useStyles2(getStyles);
+  //
+  const rows = data.series.flatMap((d) => d.fields.flatMap((item) => item.values));
+  const messageItem = rows.map((item) => ({ text: item }));
 
+  /** Renderer */
   return (
     <div
       className={cx(
@@ -60,8 +64,8 @@ export const AnalyticsAiPanel: React.FC<Props> = ({ options, data, width, height
         {options.showSeriesCount && <div>Number of series: {data.series.length}</div>}
         <div>Text option value: {options.text}</div>
       </div> */}
-      
-      <Chat placeholder={QUERY_TEXTFIELD_PLACEHOLDER} />
+
+      <Chat placeholder={QUERY_TEXTFIELD_PLACEHOLDER} messageItem={messageItem} />
     </div>
   );
 };

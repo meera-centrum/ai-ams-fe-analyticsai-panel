@@ -1,22 +1,28 @@
 import React, { useCallback, useState } from 'react';
 import { ChatMessages } from './ChatMessages';
 import { ChatInput } from './ChatInput';
-import { ChatMessageType } from './ChatMessageType';
-import './chat.css'
+
+import './chat.css';
 
 interface ChatProps {
-    placeholder?: string 
+  placeholder?: string;
+  messageItem: any;
 }
 
-export const Chat: React.FC<ChatProps> = ({placeholder}) => { 
-    const [messages, setMessages] = useState<ChatMessageType[]>([])
+export const Chat: React.FC<ChatProps> = ({ placeholder, messageItem }) => {
+  /** States */
+  const [messages, setMessages] = useState(messageItem);
 
-    const onSendMessage = useCallback((text: string)  => { 
-        setMessages(prev => [...prev, {text}])
-    }, [])
+  /** Callbacks */
+  const onSendMessage = useCallback((text: string) => {
+    setMessages((prev: any) => [...prev, { text }]);
+  }, []);
 
-    return (<div className='chat-container'>
-        <ChatMessages className='chat-message-list' messages={messages} />
-        <ChatInput placeholder={placeholder} onSend={onSendMessage} />
-    </div>)
-}
+  /** Renderer */
+  return (
+    <div className="chat-container">
+      <ChatMessages className="chat-message-list" messages={messages} />
+      <ChatInput placeholder={placeholder} onSend={onSendMessage} />
+    </div>
+  );
+};
