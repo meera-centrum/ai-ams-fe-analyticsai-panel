@@ -15,6 +15,12 @@ export const plugin = new PanelPlugin<AnalyticsAiOptions>(AnalyticsAiPanel).setP
       name: 'Show series counter',
       defaultValue: false,
     })
+    .addTextInput({
+      path: 'chatId',
+      name: 'Chat Id',
+      description: 'chat id',
+      defaultValue: 'chatId',
+    })
     .addRadio({
       path: 'seriesCountSize',
       defaultValue: 'sm',

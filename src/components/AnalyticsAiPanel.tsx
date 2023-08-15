@@ -1,9 +1,9 @@
 import React from 'react';
 import { PanelProps } from '@grafana/data';
-import { AnalyticsAiOptions } from 'types';
 import { css, cx } from '@emotion/css';
 import { useStyles2 } from '@grafana/ui';
 import { Chat } from './Chat';
+import { AnalyticsAiOptions } from '../types';
 
 interface Props extends PanelProps<AnalyticsAiOptions> {}
 
@@ -29,12 +29,14 @@ const getStyles = () => {
   };
 };
 
-export const AnalyticsAiPanel: React.FC<Props> = ({ options, data, width, height }) => {
-  // const theme = useTheme2();
+export const AnalyticsAiPanel: React.FC<Props> = ({ options, data, width, height, replaceVariables }) => {
   const styles = useStyles2(getStyles);
-  //
+
   const rows = data.series.flatMap((d) => d.fields.flatMap((item) => item.values));
   const messageItem = rows.map((item) => ({ text: item }));
+
+  const { chatId } = options;
+  const chatIdQueryParameter = replaceVariables(`$${chatId}`);
 
   /** Renderer */
   return (
@@ -47,25 +49,7 @@ export const AnalyticsAiPanel: React.FC<Props> = ({ options, data, width, height
         `
       )}
     >
-      {/* <svg
-        className={styles.svg}
-        width={width}
-        height={height}
-        xmlns="http://www.w3.org/2000/svg"
-        xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox={`-${width / 2} -${height / 2} ${width} ${height}`}
-      >
-        <g>
-          <circle style={{ fill: theme.colors.primary.main }} r={100} />
-        </g>
-      </svg>
-
-      <div className={styles.textBox}>
-        {options.showSeriesCount && <div>Number of series: {data.series.length}</div>}
-        <div>Text option value: {options.text}</div>
-      </div> */}
-
-      <Chat placeholder={QUERY_TEXTFIELD_PLACEHOLDER} messageItem={messageItem} />
+      <Chat placeholder={QUERY_TEXTFIELD_PLACEHOLDER} messageItem={messageItem} chatId={chatIdQueryParameter} />
     </div>
   );
 };
