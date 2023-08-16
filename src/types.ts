@@ -4,4 +4,5 @@ export interface AnalyticsAiOptions {
   text: string;
   showSeriesCount: boolean;
   seriesCountSize: SeriesSize;
+  chatId: string;
 }
