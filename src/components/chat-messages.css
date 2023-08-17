@@ -1,8 +1,8 @@
-.chat-messages-container{ 
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    gap: 15px;
-    margin: 15px 0;
-    overflow-y: auto;
+.chat-messages-container {
+  overflow-y: auto;
+}
+.chat-messages-loading {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
 }
