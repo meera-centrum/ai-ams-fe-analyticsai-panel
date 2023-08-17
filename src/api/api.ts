@@ -2,7 +2,11 @@ import { nanoid } from 'nanoid';
 
 const END_POINT = 'http://localhost:3001';
 
-export const generateMessage = async (chatId: string, message: string) => {
+export const generateMessage = async (
+  chatId: string,
+  message: string,
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+) => {
   return fetch(`${END_POINT}/api/generate`, {
     method: 'POST',
     credentials: 'include',
@@ -19,6 +23,7 @@ export const generateMessage = async (chatId: string, message: string) => {
     }),
   }).then((res) => {
     if (res.ok) {
+      setLoading(false);
       return res.json();
     }
     return res

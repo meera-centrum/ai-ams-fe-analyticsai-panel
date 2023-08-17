@@ -14,12 +14,14 @@ interface ChatProps {
 export const Chat: React.FC<ChatProps> = ({ placeholder, messageItem, chatId }) => {
   /** States */
   const [messages, setMessages] = useState(messageItem);
+  const [loading, setLoading] = useState(false);
 
   /** Callbacks */
   const onSendMessage = useCallback(
     (text: string) => {
       setMessages((prev: any) => [...prev, { text }]);
-      generateMessage(chatId, text);
+      setLoading(true);
+      generateMessage(chatId, text, setLoading);
     },
     [chatId]
   );
@@ -27,7 +29,7 @@ export const Chat: React.FC<ChatProps> = ({ placeholder, messageItem, chatId }) 
   /** Renderer */
   return (
     <div className="chat-container">
-      <ChatMessages className="chat-message-list" messages={messages} />
+      <ChatMessages className="chat-message-list" messages={messages} isLoading={loading} />
       <ChatInput placeholder={placeholder} onSend={onSendMessage} />
     </div>
   );

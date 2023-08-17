@@ -1,6 +1,7 @@
-.chat-message-container { 
-    background-color: #ebf3ff;
-    padding: 15px;
-    border-radius: 5px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.chat-message-container {
+  background-color: #ebf3ff;
+  padding: 15px;
+  margin: 8px;
+  border-radius: 5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

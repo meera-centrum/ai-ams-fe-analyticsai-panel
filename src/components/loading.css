@@ -1,0 +1,12 @@
+.loading-container {
+  border: 1px solid white;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px 3px #e8e8e8;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  width: fit-content;
+}
+.loading-text {
+  margin-left: 10px;
+}
