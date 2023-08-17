@@ -23,6 +23,7 @@ coverage
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 dist/
 artifacts/
+ai-ams-fe-analyticsai-panel/
 work/
 ci/
 e2e-results/
