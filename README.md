@@ -4,18 +4,25 @@
 
 On main branch:
 Automatic Release:
+
 1. `yarn version --new-version ***` for example: `yarn version --new-version 2.3.15`
 2. `git push` and wait until the CI workflow has been finished.
 3. Make a draft release with this new version on GitHub.
 4. `git tag origin ***` for example: `git tag origin v2.3.15` and wait until the Release workflow has been finished.
-* If automatic Release workflow failed you had to make a release version manually.
+
+- If automatic Release workflow failed you had to make a release version manually.
 
 Manual Release (Replacement for 4th step):
+
 1. You must to make sure `dist` folder is up to date. So run `yarn build`.
 2. Move dist content to new folder named like repo project: `mv dist ai-ams-fe-analyticsai-panel`
 3. Zip this new folder with a template name: `zip ai-ams-fe-analyticsai-panel-***.zip ai-ams-fe-analyticsai-panel -r` for example: `zip ai-ams-fe-analyticsai-panel-2.3.15.zip ai-ams-fe-analyticsai-panel -r`
-4. Make a checksum file for this zip: `md5sum ai-ams-fe-groupcontent-panel-***.zip > ai-ams-fe-groupcontent-panel-***.zip.md5` for example: `md5sum ai-ams-fe-groupcontent-panel-2.3.15.zip > ai-ams-fe-groupcontent-panel-2.3.15.zip.md5`
+4. Make a checksum file for this zip: `md5sum ai-ams-fe-analyticsai-panel-***.zip > ai-ams-fe-analyticsai-panel-***.zip.md5` for example: `md5sum ai-ams-fe-analyticsai-panel-2.3.15.zip > ai-ams-fe-analyticsai-panel-2.3.15.zip.md5`
 5. Now we should upload these two files into the new release on github.
+
+## How to build locally on docker
+
+- Run `yarn run localbuild`
 
 # Grafana panel plugin template
 
@@ -85,7 +92,6 @@ Use panel plugins when you want to do things like visualize data returned by dat
    yarn run lint:fix
    ```
 
-
 # Distributing your plugin
 
 When distributing a Grafana plugin either within the community or privately the plugin must be signed so the Grafana application can verify its authenticity. This can be done with the `@grafana/sign-plugin` package.
@@ -124,7 +130,6 @@ To trigger the workflow we need to push a version tag to github. This can be ach
 
 1. Run `npm version <major|minor|patch>`
 2. Run `git push origin main --follow-tags`
-
 
 ## Learn more
 
