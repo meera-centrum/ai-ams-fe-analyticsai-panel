@@ -1,4 +1,5 @@
 .chat-messages-container {
+  margin-top: auto;
   overflow-y: auto;
 }
 .chat-messages-loading {
