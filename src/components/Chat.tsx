@@ -9,9 +9,11 @@ interface ChatProps {
   placeholder?: string;
   messageItem: any;
   chatId: string;
+  url: string;
+  cookie: string;
 }
 
-export const Chat: React.FC<ChatProps> = ({ placeholder, messageItem, chatId }) => {
+export const Chat: React.FC<ChatProps> = ({ placeholder, messageItem, chatId, url, cookie }) => {
   /** States */
   const [messages, setMessages] = useState(messageItem);
   const [loading, setLoading] = useState(false);
@@ -21,9 +23,9 @@ export const Chat: React.FC<ChatProps> = ({ placeholder, messageItem, chatId }) 
     (text: string) => {
       setMessages((prev: any) => [...prev, { text }]);
       setLoading(true);
-      generateMessage(chatId, text, setLoading);
+      generateMessage(chatId, url, cookie, text, setLoading);
     },
-    [chatId]
+    [chatId, cookie, url]
   );
 
   /** Renderer */

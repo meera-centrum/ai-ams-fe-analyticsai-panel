@@ -35,8 +35,10 @@ export const AnalyticsAiPanel: React.FC<Props> = ({ options, data, width, height
   const rows = data.series.flatMap((d) => d.fields.flatMap((item) => item.values));
   const messageItem = rows.map((item) => ({ text: item }));
 
-  const { chatId } = options;
+  const { chatId, url, cookie } = options;
   const chatIdQueryParameter = replaceVariables(`$${chatId}`);
+  const urlQueryParameter = replaceVariables(`$${url}`);
+  const cookieQueryParameter = replaceVariables(`$${cookie}`);
 
   /** Renderer */
   return (
@@ -49,7 +51,13 @@ export const AnalyticsAiPanel: React.FC<Props> = ({ options, data, width, height
         `
       )}
     >
-      <Chat placeholder={QUERY_TEXTFIELD_PLACEHOLDER} messageItem={messageItem} chatId={chatIdQueryParameter} />
+      <Chat
+        placeholder={QUERY_TEXTFIELD_PLACEHOLDER}
+        messageItem={messageItem}
+        chatId={chatIdQueryParameter}
+        url={urlQueryParameter}
+        cookie={cookieQueryParameter}
+      />
     </div>
   );
 };

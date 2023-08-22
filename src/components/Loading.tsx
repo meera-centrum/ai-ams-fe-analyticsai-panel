@@ -5,7 +5,7 @@ import './loading.css';
 const Loading = () => {
   return (
     <div className="loading-container">
-      <img className="animatedLoading-gif" src={loader} width={15} />
+      <img className="animatedLoading-gif" src={loader} width={20} height={20} />
       <div className="loading-text">Meera GPT is thinking...</div>
     </div>
   );
