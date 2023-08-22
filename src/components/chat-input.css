@@ -1,17 +1,22 @@
-.chat-input-container { 
-    
+.chat-input-container .MuiInputBase-root .MuiInputAdornment-root .MuiIconButton-root {
+  color: #919191;
 }
 
-.chat-input { 
+.chat-input {
 }
 
-.chat-button-container{ 
-    display: flex;
-    justify-content: end;
+.chat-button-container {
+  display: flex;
+  justify-content: end;
 }
 
-.chat-button { 
-    width: 24px;
-    height: 24px;
-    display: flex;
+.chat-button {
+  width: 24px;
+  height: 24px;
+  display: flex;
+}
+
+.chat-input-palceholder .MuiFormLabel-root {
+  font-family: sans-serif;
+  font-weight: 600;
 }

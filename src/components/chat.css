@@ -10,3 +10,7 @@
   /* flex-grow: 1; */
   margin-bottom: 15px;
 }
+
+.chat-container  .MuiFormControl-root {
+  margin: 0 10px;
+}

@@ -22,14 +22,19 @@ export const generateMessage = async (
       id: nanoid(),
       role: 'user',
     }),
-  }).then((res) => {
-    if (res.ok) {
+  })
+    .then((res) => {
+      if (res.ok) {
+        setLoading(false);
+        return res.json();
+      }
+      return res
+        .text()
+        .then((text) => Promise.reject(text))
+        .catch(() => Promise.reject(res.statusText));
+    })
+    .catch((error) => {
       setLoading(false);
-      return res.json();
-    }
-    return res
-      .text()
-      .then((text) => Promise.reject(text))
-      .catch(() => Promise.reject(res.statusText));
-  });
+      console.log('catch error on analytics ai project' + error);
+    });
 };

@@ -12,7 +12,7 @@ const QUERY_TEXTFIELD_PLACEHOLDER = 'Type here to ask your query...';
 const getStyles = () => {
   return {
     wrapper: css`
-      font-family: Open Sans;
+      font-family: sans-serif;
       position: relative;
     `,
     svg: css`
