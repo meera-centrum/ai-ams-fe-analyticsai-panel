@@ -32,9 +32,14 @@ const getStyles = () => {
 export const AnalyticsAiPanel: React.FC<Props> = ({ options, data, width, height, replaceVariables }) => {
   const styles = useStyles2(getStyles);
 
-  const rows = data.series.flatMap((d) => d.fields.flatMap((item) => item.values));
-  const messageItem = rows.map((item) => ({ text: item }));
+  const contents = data.series
+    .map((d) => d.fields.find((f) => f.name === 'content'))
+    .map((f) => f?.values)
+    .at(-1)
+    ?.toArray();
 
+  const messageItem = contents ? contents.map((item) => ({ text: item })) : [];
+  //
   const { chatId, url, cookie } = options;
   const chatIdQueryParameter = replaceVariables(`$${chatId}`);
   const urlQueryParameter = replaceVariables(`$${url}`);
