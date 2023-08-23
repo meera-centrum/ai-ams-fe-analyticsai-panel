@@ -4,6 +4,7 @@ import { css, cx } from '@emotion/css';
 import { useStyles2 } from '@grafana/ui';
 import { Chat } from './Chat';
 import { AnalyticsAiOptions } from '../types';
+import './analyticsai-panel.css';
 
 interface Props extends PanelProps<AnalyticsAiOptions> {}
 
@@ -12,7 +13,6 @@ const QUERY_TEXTFIELD_PLACEHOLDER = 'Type here to ask your query...';
 const getStyles = () => {
   return {
     wrapper: css`
-      font-family: sans-serif;
       position: relative;
     `,
     svg: css`
